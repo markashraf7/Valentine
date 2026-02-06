@@ -1,0 +1,40 @@
+body {
+  background: #fff0f5;
+  font-family: Arial, sans-serif;
+  height: 100vh;
+  margin: 0;
+}
+
+.container {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+h1 {
+  color: #d63384;
+  margin-bottom: 40px;
+}
+
+button {
+  padding: 14px 30px;
+  font-size: 18px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#yes {
+  background: #ff69b4;
+  color: white;
+  transform: scale(1);
+}
+
+#no {
+  background: #ccc;
+  position: absolute;
+}
