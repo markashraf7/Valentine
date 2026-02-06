@@ -1,51 +1,46 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+const noBtn = document.getElementById("no");
+const yesBtn = document.getElementById("yes");
+const question = document.getElementById("question");
 
-body {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: #fff;
-  font-family: Arial, sans-serif;
-}
+let noCount = 0;
 
-.container {
-  text-align: center;
-}
+noBtn.addEventListener("mouseover", () => {
+  noCount++;
 
-h1 {
-  font-size: 28px;
-  margin-bottom: 30px;
-}
+  const x = Math.random() * (window.innerWidth - 100);
+  const y = Math.random() * (window.innerHeight - 100);
 
-.btns {
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-}
+  noBtn.style.position = "absolute";
+  noBtn.style.left = `${x}px`;
+  noBtn.style.top = `${y}px`;
 
-button {
-  padding: 12px 24px;
-  font-size: 18px;
-  border: none;
-  border-radius: 12px;
-  cursor: pointer;
-  transition: 0.3s;
-}
+  if (noCount >= 3) {
+    question.innerHTML = `
+      <span style="display:block; font-size:24px;">Maryam 👀</span>
+      Are you sure? 🥺
+    `;
+    yesBtn.style.transform = "scale(1.4)";
+  }
 
-#yes {
-  background-color: #ff4d6d;
-  color: white;
-}
+  if (noCount >= 6) {
+    noBtn.style.display = "none";
+  }
+});
 
-#yes:hover {
-  transform: scale(1.1);
-}
-
-#no {
-  background-color: #ccc;
-}
+yesBtn.addEventListener("click", () => {
+  document.body.innerHTML = `
+    <div style="
+      height:100vh;
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      font-family:Arial;
+      text-align:center;
+    ">
+      <h1>Yaaay 💖🥰</h1>
+      <p>You just made my day!</p>
+      <img src="https://media.giphy.com/media/l0MYt5jPR6QX5pnqM/giphy.gif" width="250">
+    </div>
+  `;
+});
