@@ -1,59 +1,51 @@
-const yesBtn = document.getElementById("yes");
-const noBtn = document.getElementById("no");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
 
-let yesScale = 1;
-let noScale = 1;
-let noClicks = 0;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  font-family: Arial, sans-serif;
+}
 
-const noTexts = [
-  "No 🙈",
-  "Are you sure? 🥺",
-  "Really sure? 😳",
-  "Think again 😢",
-  "Last chance 😭"
-];
+.container {
+  text-align: center;
+}
 
-const moveNo = () => {
-  const x = Math.random() * (window.innerWidth - 120);
-  const y = Math.random() * (window.innerHeight - 60);
+h1 {
+  font-size: 28px;
+  margin-bottom: 30px;
+}
 
-  noBtn.style.left = x + "px";
-  noBtn.style.top = y + "px";
-};
+.btns {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
 
-noBtn.onclick = () => {
-  noClicks++;
+button {
+  padding: 12px 24px;
+  font-size: 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: 0.3s;
+}
 
-  // تغيير النص
-  if (noClicks < noTexts.length) {
-    noBtn.innerText = noTexts[noClicks];
-  }
+#yes {
+  background-color: #ff4d6d;
+  color: white;
+}
 
-  // yes يكبر
-  yesScale += 0.2;
-  yesBtn.style.transform = `scale(${yesScale})`;
+#yes:hover {
+  transform: scale(1.1);
+}
 
-  // no يصغر
-  noScale -= 0.2;
-  noBtn.style.transform = `scale(${noScale})`;
-
-  // no يهرب
-  moveNo();
-
-  // يختفي في الآخر
-  if (noScale <= 0.25) {
-    noBtn.style.display = "none";
-  }
-};
-
-yesBtn.onclick = () => {
-  document.querySelector(".container").innerHTML = `
-    <h1 style="color:#d63384">💖Yaaay !💖</h1>
-    <p style="font-size:22px">You just made my heart very happy 💞</p>
-    <img 
-      src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExZzR4NnF6b3NnY2E5d2h3a3FzZWg1M2M2dW8xZ21qZXV0Y2FjZyZlcD12MV9naWZzX3NlYXJjaCZjdD1n/MDJ9IbxxvDUQM/giphy.gif" 
-      alt="cute gif"
-      style="width:220px; margin-top:20px;"
-    />
-  `;
-};
+#no {
+  background-color: #ccc;
+}
